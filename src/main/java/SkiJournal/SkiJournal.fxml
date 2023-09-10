@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainSite" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="506.0" prefWidth="1056.0" style="-fx-background-color: aliceblue;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SkiJournal.SkiJournalController">
+   <children>
+      <AnchorPane fx:id="logInView" layoutX="348.0" layoutY="209.0" prefHeight="99.0" prefWidth="344.0" style="-fx-background-color: white;">
+         <children>
+            <ChoiceBox fx:id="chooseUser" layoutX="18.0" layoutY="44.0" onAction="#handleChoseUser" prefHeight="30.0" prefWidth="150.0" />
+            <Label layoutX="18.0" layoutY="15.0" text="Velg bruker eller opprett ny bruker" />
+            <Label />
+            <Button fx:id="createNewUser" layoutX="220.0" layoutY="44.0" mnemonicParsing="false" onAction="#handleCreateNewUser" prefHeight="30.0" prefWidth="118.0" text="Opprett ny bruker" />
+         </children>
+      </AnchorPane>
+      <Label fx:id="profileInfo" layoutX="14.0" layoutY="20.0" prefHeight="42.0" prefWidth="257.0" text="Label" textOverrun="CLIP">
+         <font>
+            <Font name="Microsoft Sans Serif" size="29.0" />
+         </font>
+      </Label>
+      <VBox fx:id="activityInputView" layoutX="13.0" layoutY="65.0" prefHeight="370.0" prefWidth="611.0" spacing="10.0" visible="false">
+         <children>
+            <Label text="Opprett ny aktivitet">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <TextField fx:id="title" prefHeight="11.0" prefWidth="247.0" promptText="*Tittel på aktivitet" />
+            <DatePicker fx:id="date" editable="false" prefHeight="26.0" prefWidth="156.0" />
+            <TextArea fx:id="text" prefHeight="70.0" prefWidth="191.0" promptText="*Beskrivelse av aktiviteten" />
+            <TextField fx:id="distance" promptText="*Distanse (oppgi i km, bruk punktum som komma)" />
+            <ChoiceBox fx:id="activityChoice" onAction="#handleActivityTypeChoice" prefWidth="150.0" />
+            <TextField fx:id="extraOne" disable="true" promptText="Ekstra informasjon tilknyttet valg av aktivitetstype" />
+            <TextField fx:id="extraTwo" disable="true" promptText="Ekstra informasjon tilknyttet valg av aktivitetstype" />
+            <AnchorPane prefHeight="54.0" prefWidth="611.0">
+               <children>
+                  <Button fx:id="saveActivity" defaultButton="true" mnemonicParsing="false" onAction="#handleSaveActivity" text="Lagre aktivitet" />
+                  <Button fx:id="cancelActivity" layoutX="121.0" mnemonicParsing="false" onAction="#handleCancelActivity" text="Avbryt" />
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+      <AnchorPane fx:id="distanceGoalView" layoutX="14.0" layoutY="65.0" prefHeight="200.0" prefWidth="333.0" visible="false">
+         <children>
+            <Label text="Sett Distansemål">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <TextField fx:id="distanceGoalInput" layoutY="40.0" prefHeight="26.0" prefWidth="100.0" />
+            <Button fx:id="saveDistanceGoal" layoutY="85.0" minWidth="35.0" mnemonicParsing="false" onAction="#handleSaveDistanceGoal" prefHeight="28.0" prefWidth="54.0" text="Lagre" />
+            <Button fx:id="cancelSaveDistanceGoal" layoutX="73.0" layoutY="85.0" mnemonicParsing="false" onAction="#handleCancelDistanceGoal" prefHeight="28.0" prefWidth="54.0" text="Avbryt" />
+            <Label layoutX="108.0" layoutY="44.0" text="km" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="tableActivitiesView" layoutX="23.0" layoutY="57.0" prefHeight="355.0" prefWidth="648.0">
+         <children>
+            <TableView fx:id="tableActivities" layoutX="-14.0" layoutY="46.0" prefHeight="259.0" prefWidth="1035.0" style="-fx-background-color: powderblue;">
+              <columns>
+                  <TableColumn fx:id="colActivity" prefWidth="85.19336128234863" resizable="false" sortable="false" text="Aktivitetstype" />
+                <TableColumn fx:id="colTitle" prefWidth="101.30665588378906" resizable="false" sortable="false" style="fx-background-color: powderblue;" text="Tittel" />
+                <TableColumn fx:id="colDate" prefWidth="99.0" resizable="false" sortType="DESCENDING" text="Dato" />
+                  <TableColumn fx:id="colText" prefWidth="292.0" resizable="false" sortable="false" text="Tekst" />
+                  <TableColumn fx:id="colDistance" prefWidth="70.0" resizable="false" sortable="false" text="Distanse" />
+                  <TableColumn fx:id="colExtraOne" prefWidth="149.43218994140625" resizable="false" sortable="false" text="Ekstra informasjon" />
+                  <TableColumn fx:id="colExtraTwo" prefWidth="236.5" resizable="false" sortable="false" text="Ekstra informasjon" />
+
+
+              </columns>
+            </TableView>
+            <Label layoutX="-9.0" layoutY="12.0" prefHeight="29.0" prefWidth="224.0" text="Dine Aktiviteter:">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <GridPane layoutX="-12.0" layoutY="313.0" prefHeight="116.0" prefWidth="1029.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label prefHeight="18.0" prefWidth="116.0" text="Total distanse:" GridPane.rowIndex="1" />
+                  <Label prefHeight="18.0" prefWidth="115.0" text="Distansemål:" GridPane.rowIndex="2" />
+                  <Label prefHeight="18.0" prefWidth="114.0" text="Antall Skidager:" textOverrun="WORD_ELLIPSIS" wrapText="true" GridPane.rowIndex="3" />
+                  <Label fx:id="achivedDistance" prefHeight="18.0" prefWidth="78.0" text="0.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="distanceGoal" prefHeight="18.0" prefWidth="78.0" text="0.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label fx:id="skiDays" text="0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label prefHeight="18.0" prefWidth="212.0" text="Oppnådd distanse av distansemål:" GridPane.rowIndex="4" />
+                  <ProgressBar fx:id="progressbar" prefHeight="18.0" prefWidth="169.0" progress="0.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Button fx:id="deleteActivity" mnemonicParsing="false" onAction="#handleDeleteActivity" prefHeight="29.0" prefWidth="272.0" text="Slett valgte aktivitet" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                  <Button fx:id="changeUser" mnemonicParsing="false" onAction="#handleChangeUser" prefHeight="29.0" prefWidth="273.0" text="Bytt bruker" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                  <Button fx:id="CreateNewActivity" defaultButton="true" mnemonicParsing="false" onAction="#handleCreateNewActivity" prefHeight="29.0" prefWidth="343.0" text="Opprett ny aktivitet" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#handleSetDistanceGoal" prefHeight="29.0" prefWidth="295.0" text="Sett Distansemål" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Button>
+               </children>
+            </GridPane>
+            <ChoiceBox fx:id="activityViewChoiceBox" layoutX="857.0" layoutY="14.0" onAction="#handleActivityViewChoice" prefWidth="150.0" />
+            <ChoiceBox fx:id="sortingActivities" layoutX="612.0" layoutY="14.0" onAction="#handleSortActivitiesChoice" prefHeight="27.0" prefWidth="209.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
