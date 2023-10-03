@@ -4,7 +4,7 @@
 Dette prosjektet er en del av faget objektorientert programmering. Oppgaven var å utvikle en applikasjon ved bruk av java og javafx, som skulle ha støtte for filhåndtering.
 
 ## Praktisk info
-Det er enkelt å kjøre appen. Alt man trenger å kjøre er å kjøre koden som ligger i filen man finner her: src/main/java/SkiJournal/SkiJournalApp.java  
+Det er enkelt å kjøre appen. Alt man trenger å gjøre er å kjøre koden som ligger i filen man finner her: src/main/java/SkiJournal/SkiJournalApp.java  
 
 
 ## Om skijorunal
